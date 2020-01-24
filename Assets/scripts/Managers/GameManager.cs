@@ -77,12 +77,10 @@ public class GameManager : MonoBehaviour
         _currentwave = 0;
         money = 100;
         pointCoords = new Vector3[point.Length];
-        UpdateUI();
     }
     IEnumerator SpawnWave(int count,float TimeBetweenSpawn,float TimeToNewWave)
     {
         _currentwave++;
-        UpdateUI();
         int i = 0;
         while (i<count)
         {
@@ -114,7 +112,6 @@ public class GameManager : MonoBehaviour
     {
         if (currentHp-damage > 0) currentHp-=damage;
         else ShowLooseScreen();
-        UpdateUI();
     }
     void UpdateUI()
     {
@@ -143,7 +140,6 @@ public class GameManager : MonoBehaviour
             money -= Towers[type].price;
             clickedCell.GetComponent<TowerShoot>().Init(Towers[type]);
             clickedCell.GetComponent<ClickOnSlot>().type = type;
-            UpdateUI();
         }
     }
     public void Sell()
